@@ -6,7 +6,7 @@
 
 This repo contains functions for loading datasets in python, you can check the source of each function into their pydocs. Currently supported datasets are [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html), [Tiny-ImageNet](http://cs231n.stanford.edu/project.html) and [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=news). 
 
-Pull requests are qellcome!!!
+Pull requests are welcome!!!
 
 ## Requirements
 
