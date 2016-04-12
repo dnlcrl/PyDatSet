@@ -13,7 +13,7 @@ def get_CIFAR10_data(cifar10_dir, num_training=49000, num_validation=1000, num_t
     we used for the SVM, but condensed to a single function.
     '''
     # Load the raw CIFAR-10 data
-    X_train, y_train, X_test, y_test = load_CIFAR10(cifar10_dir)
+    X_train, y_train, X_test, y_test = load(cifar10_dir)
 
     # Subsample the data
     mask = range(num_training, num_training + num_validation)
