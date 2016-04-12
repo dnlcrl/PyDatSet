@@ -21,7 +21,7 @@ Pull requests are welcome!!!
 
 		pip install git+git://github.com/dnlcrl/PyDatSet.git
 
-- alternatively, you can download this repo and install all requirements by running:
+- **alternatively**, you can download this repo and install all requirements by running:
 
 		pip install -r /path/to/requirements.txt
 
