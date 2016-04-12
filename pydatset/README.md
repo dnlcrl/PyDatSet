@@ -22,7 +22,7 @@ Data loading utilities, contains functions to load the CIFAR10 and Tiny Imagenet
 
 ## get_datasets.sh
 
-Download and expand the CIFAR10 dataset. Run this script before running train.py
+Download and expand the CIFAR10 dataset.
 
 ## gtsrb.py
 
