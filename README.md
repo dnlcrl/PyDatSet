@@ -11,8 +11,8 @@ Pull requests are welcome!!!
 ## Requirements
 
 - [numpy](www.numpy.org/)
-- [scipy](www.scipy.org/) (used for loading Tiny-ImageNet)
-- [cv2](opencv.org) (used for loading GTSRB)
+- [scipy](www.scipy.org/) (used to load Tiny-ImageNet)
+- [cv2](opencv.org) (used to load GTSRB)
 - [scikit_learn](scikit-learn.org/) (used for data augmentation)
 
 You can get [pip](https://pypi.python.org/pypi/pip) and install all requirements by running:
