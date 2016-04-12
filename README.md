@@ -1,6 +1,6 @@
 # PyDatSet
 
-### Load various datasets for image recognition purposes
+Load various datasets for image recognition purposes
 
 ## Description 
 
