@@ -1,5 +1,3 @@
-# ./nnet/data/ Directory
-
 In this folder you will find everything you need to load and use yor datasets.
 You should also use this directory as root for your datasets.
 
