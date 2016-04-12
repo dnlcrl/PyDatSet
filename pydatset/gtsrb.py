@@ -12,15 +12,13 @@ import cv2
 import numpy as np
 
 import csv
-from matplotlib import cm
-from matplotlib import pyplot as plt
 
 __author__ = "Michael Beyeler"
 __license__ = "GNU GPL 3.0 or later"
 
 
 def get_GTSRB_data(rootpath="datasets/gtsrb_training", feature=None, cut_roi=True,
-              test_split=0.2, plot_samples=False, seed=113):
+                   test_split=0.2, seed=113):
     """Loads the GTSRB dataset
         This function loads the German Traffic Sign Recognition Benchmark
         (GTSRB), performs feature extraction, and partitions the data into
@@ -76,19 +74,6 @@ def get_GTSRB_data(rootpath="datasets/gtsrb_training", feature=None, cut_roi=Tru
     np.random.shuffle(X)
     np.random.seed(seed)
     np.random.shuffle(labels)
-
-    if plot_samples:
-        num_samples = 15
-        sample_idx = np.random.randint(len(X), size=num_samples)
-        sp = 1
-        for r in xrange(3):
-            for c in xrange(5):
-                ax = plt.subplot(3, 5, sp)
-                sample = X[sample_idx[sp - 1]]
-                ax.imshow(sample.reshape((32, 32)), cmap=cm.Greys_r)
-                ax.axis('off')
-                sp += 1
-        plt.show()
 
     X_train = X[:int(len(X)*(1-test_split))]
     y_train = labels[:int(len(X)*(1-test_split))]

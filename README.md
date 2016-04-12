@@ -10,15 +10,12 @@ Pull requests are welcome!!!
 
 ## Requirements
 
-- [Python 2.7](https://www.python.org/)
-- [Cython](cython.org/)
-- [matplotlib](matplotlib.org/)
 - [numpy](www.numpy.org/)
 - [scipy](www.scipy.org/)
 - [cv2](opencv.org) (only for loading GTSRB)
 - [scikit_learn](scikit-learn.org/)
 
-After you get Python, you can get [pip](https://pypi.python.org/pypi/pip) and install all requirements by running:
+You can get [pip](https://pypi.python.org/pypi/pip) and install all requirements by running:
 	
 	pip install -r /path/to/requirements.txt
 
