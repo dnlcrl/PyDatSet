@@ -1,4 +1,6 @@
 __all__ = [
-    "data_augmentation",
-    "data_utils"
-    ]
+    'data_augmentation',
+    'cifar10',
+    'gtsrb',
+    'tiny_imagenet'
+]
