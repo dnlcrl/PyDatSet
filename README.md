@@ -4,7 +4,12 @@ Load various datasets in Python
 
 ## Description 
 
-This repo contains pydatset, a package for loading (and eventually augmenting) datasets in python, you can check the source of each function into their pydocs. Currently supported datasets are [MNIST](http://yann.lecun.com/exdb/mnist/) [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html), [Tiny-ImageNet](http://cs231n.stanford.edu/project.html) and [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=news). 
+This repo contains pydatset, a package for loading (and eventually augmenting) datasets in python, you can check the source of each function into their pydocs. Currently supported datasets are:
+ 
+ - [MNIST](http://yann.lecun.com/exdb/mnist/)
+ - [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html)
+ - [Tiny-ImageNet](http://cs231n.stanford.edu/project.html) 
+ - [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=news). 
 
 Pull requests are welcome!!!
 
