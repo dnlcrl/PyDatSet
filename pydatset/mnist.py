@@ -3,13 +3,22 @@ import struct
 import numpy as np
 
 """
-Source: https://gist.github.com/akesling/5358964
-Loosely inspired by http://abel.ee.ucla.edu/cvxopt/_downloads/mnist.py
+Loosely inspired by https://gist.github.com/akesling/5358964
 which is GPL licensed.
 """
 
 
-def read(dataset="training", path="."):
+def get_data():
+    X_train, y_train = read('training')
+    X_test, y_test = read('testing')
+
+    return {
+        'X_train': X_train, 'y_train': y_train,
+        'X_test': X_test, 'y_test': y_test,
+    }
+
+
+def read(dataset="training", path="../MNIST"):
     """
     Python function for importing the MNIST data set.  It returns an iterator
     of 2-tuples with the first element being the label and the second element
@@ -32,15 +41,9 @@ def read(dataset="training", path="."):
 
     with open(fname_img, 'rb') as fimg:
         magic, num, rows, cols = struct.unpack(">IIII", fimg.read(16))
-        img = np.fromfile(fimg, dtype=np.uint8).reshape(len(lbl), rows, cols)
+        img = np.fromfile(fimg, dtype=np.uint8).reshape(len(lbl), 1, rows, cols)
 
-    # Create an iterator which returns each image in turn
-    for i in xrange(len(lbl)):
-        yield get_img(lbl, img, i)
-
-
-def get_img(lbl, img, idx):
-    return lbl[idx], img[idx]
+    return img, lbl
 
 
 def show(image):
@@ -56,3 +59,6 @@ def show(image):
     ax.xaxis.set_ticks_position('top')
     ax.yaxis.set_ticks_position('left')
     pyplot.show()
+
+data = get_data()
+import pdb; pdb.set_trace()
