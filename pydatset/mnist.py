@@ -8,9 +8,9 @@ which is GPL licensed.
 """
 
 
-def get_data():
-    X_train, y_train = read('training')
-    X_test, y_test = read('testing')
+def get_data(dataset_path):
+    X_train, y_train = read('training', dataset_path)
+    X_test, y_test = read('testing', dataset_path)
 
     return {
         'X_train': X_train, 'y_train': y_train,
@@ -59,6 +59,3 @@ def show(image):
     ax.xaxis.set_ticks_position('top')
     ax.yaxis.set_ticks_position('left')
     pyplot.show()
-
-data = get_data()
-import pdb; pdb.set_trace()
