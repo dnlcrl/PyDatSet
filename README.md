@@ -17,8 +17,8 @@ Pull requests are welcome!!!
 
 - [numpy](www.numpy.org/)
 - [scipy](www.scipy.org/) (used to load Tiny-ImageNet)
-- [cv2](opencv.org) (used to load GTSRB)
-- [scikit_learn](scikit-learn.org/) (used for data augmentation)
+- [cv2](opencv.org/) (used to load GTSRB)
+- [scikit-image](scikit-image.org/) (used for data augmentation)
 
 ## Installation
 
