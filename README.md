@@ -9,7 +9,7 @@ This repo contains pydatset, a package for loading (and eventually augmenting) d
  - [MNIST](http://yann.lecun.com/exdb/mnist/)
  - [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html)
  - [Tiny-ImageNet](http://cs231n.stanford.edu/project.html) 
- - [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=news). 
+ - [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=news)
 
 Pull requests are welcome!!!
 
