@@ -92,4 +92,4 @@ def read_kaggle_version(path="../MNIST"):
     X_train /= std
     X_test /= std
 
-    return X_test, y_test, X_train, y_train, mean, std
+    return X_train, y_train, X_test, y_test, mean, std
