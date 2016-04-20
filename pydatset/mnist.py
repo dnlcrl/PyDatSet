@@ -1,7 +1,6 @@
 import os
 import struct
 import numpy as np
-from numpy import genfromtxt
 import pandas as pd
 
 """
@@ -17,18 +16,25 @@ def get_data(dataset_path, mode='std'):
         kaggle => kaggle dataset
     '''
     if mode is 'std':
-        pass
+        X_train, y_train = read('training', dataset_path)
+        X_test, y_test = read('testing', dataset_path)
+        mean = np.mean(X_train, axis=0)
+        std = np.std(X_train)
+
+        X_train -= mean
+        X_test -= mean
+
+        X_train /= std
+        X_test /= std
     elif mode is 'kaggle':
-        read = read_kaggle_version
+        X_train, y_train, X_test, y_test, mean, std = read_kaggle_version(dataset_path)
     else:
         raise ValueError("mode must be 'std' or 'kaggle'")
-
-    X_train, y_train = read('training', dataset_path)
-    X_test, y_test = read('testing', dataset_path)
 
     return {
         'X_train': X_train, 'y_train': y_train,
         'X_test': X_test, 'y_test': y_test,
+        'mean': mean, 'std': std
     }
 
 
@@ -42,6 +48,7 @@ def read(dataset="training", path="../MNIST"):
     if dataset is "training":
         fname_img = os.path.join(path, 'train-images-idx3-ubyte')
         fname_lbl = os.path.join(path, 'train-labels-idx1-ubyte')
+
     elif dataset is "testing":
         fname_img = os.path.join(path, 't10k-images-idx3-ubyte')
         fname_lbl = os.path.join(path, 't10k-labels-idx1-ubyte')
@@ -61,22 +68,33 @@ def read(dataset="training", path="../MNIST"):
     return img, lbl
 
 
-def read_kaggle_version(dataset="training", path="../MNIST"):
+def read_kaggle_version(path="../MNIST"):
     '''
     Read the csv mnist files provided by kaggle:
     https://www.kaggle.com/c/digit-recognizer/
     '''
-    if dataset is "training":
-        fname = os.path.join(path, 'train.csv')
-        data = pd.read_csv(fname, delimiter=",", dtype=np.int8).values
-        lbl = data[:, 0]
-        img = data[:, 1:].reshape(-1, 1, 28, 28)
+    fname = os.path.join(path, 'train.csv')
+    data = pd.read_csv(fname)
+    images = data.iloc[:, 1:].values
+    images = images.astype(np.float)
 
-    elif dataset is "testing":
-        fname = os.path.join(path, 'test.csv')
-        data = pd.read_csv(fname, delimiter=",").values
-        lbl = None
-        img = data.reshape(-1, 1, 28, 28)
-    else:
-        raise ValueError("dataset must be 'testing' or 'training'")
-    return img, lbl
+    # convert from [0:255] => [0.0:1.0]
+    images = np.multiply(images, 1.0 / 255.0)
+
+    labels = data[[0]].values.ravel().astype(np.uint8)
+    X_test = images[:2000].reshape(-1, 1, 28, 28)
+    y_test = labels[:2000]
+
+    X_train = images[2000:].reshape(-1, 1, 28, 28)
+    y_train = labels[2000:]
+
+    mean = np.mean(X_train, axis=0)
+    std = np.std(X_train)
+
+    X_train -= mean
+    X_test -= mean
+
+    X_train /= std
+    X_test /= std
+
+    return X_test, y_test, X_train, y_train, mean, std
