@@ -18,14 +18,9 @@ def get_data(dataset_path, mode='std'):
     if mode is 'std':
         X_train, y_train = read('training', dataset_path)
         X_test, y_test = read('testing', dataset_path)
-        mean = np.mean(X_train, axis=0)
-        std = np.std(X_train)
+        mean = None
+        std = None
 
-        X_train -= mean
-        X_test -= mean
-
-        X_train /= std
-        X_test /= std
     elif mode is 'kaggle':
         X_train, y_train, X_test, y_test, mean, std = read_kaggle_version(dataset_path)
     else:
