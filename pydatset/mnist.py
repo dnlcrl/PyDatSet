@@ -64,19 +64,19 @@ def read(dataset="training", path="../MNIST"):
 def read_kaggle_version(dataset="training", path="../MNIST"):
     '''
     Read the csv mnist files provided by kaggle:
-    link here
+    https://www.kaggle.com/c/digit-recognizer/
     '''
     if dataset is "training":
         fname = os.path.join(path, 'train.csv')
         data = pd.read_csv(fname, delimiter=",", dtype=np.int8).values
         lbl = data[:, 0]
         img = data[:, 1:].reshape(-1, 1, 28, 28)
+
     elif dataset is "testing":
         fname = os.path.join(path, 'test.csv')
         data = pd.read_csv(fname, delimiter=",").values
         lbl = None
-        img = genfromtxt(fname, delimiter=',', dtype=np.int8)[
-            1:].reshape(-1, 1, 28, 28)
+        img = data.reshape(-1, 1, 28, 28)
     else:
         raise ValueError("dataset must be 'testing' or 'training'")
     return img, lbl
