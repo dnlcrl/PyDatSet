@@ -18,18 +18,15 @@ def get_data(dataset_path, mode='std'):
     if mode is 'std':
         X_train, y_train = read('training', dataset_path)
         X_test, y_test = read('testing', dataset_path)
-        mean = None
-        std = None
 
     elif mode is 'kaggle':
-        X_train, y_train, X_test, y_test, mean, std = read_kaggle_version(dataset_path)
+        X_train, y_train, X_test, y_test = read_kaggle_version(dataset_path)
     else:
         raise ValueError("mode must be 'std' or 'kaggle'")
 
     return {
         'X_train': X_train, 'y_train': y_train,
-        'X_test': X_test, 'y_test': y_test,
-        'mean': mean, 'std': std
+        'X_test': X_test, 'y_test': y_test
     }
 
 
@@ -83,13 +80,4 @@ def read_kaggle_version(path="../MNIST"):
     X_train = images[2000:].reshape(-1, 1, 28, 28)
     y_train = labels[2000:]
 
-    mean = np.mean(X_train, axis=0)
-    std = np.std(X_train)
-
-    X_train -= mean
-    X_test -= mean
-
-    X_train /= std
-    X_test /= std
-
-    return X_train, y_train, X_test, y_test, mean, std
+    return X_train, y_train, X_test, y_test
