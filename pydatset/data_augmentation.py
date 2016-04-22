@@ -4,7 +4,6 @@
 import numpy as np
 from skimage.transform import rotate
 from skimage.util import random_noise
-import cv2
 import math
 
 from numpy.random import random_integers
@@ -299,6 +298,8 @@ def elastic_transform(image, kernel_dim=13, sigma=6, alpha=36, negated=False):
     :type negated: boolean
     :returns: a nd array transformed image
     """
+    # TEMP FIX
+    import cv2
 
     # convert the image to single channel if it is multi channel one
     if image.ndim == 3:
