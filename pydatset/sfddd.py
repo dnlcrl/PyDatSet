@@ -57,9 +57,6 @@ def load(ROOT):
     ''' load all of SFDDD '''
     xs = []
     ys = []
-    Xte = []
-    Xte.append(load_imgs(os.path.join(ROOT, 'test')))
-    Xte = np.concatenate(Xte)
     for b in range(10):
         imgs = load_imgs(os.path.join(ROOT, 'train', 'c%d' % (b, )))
         ys.append([b] * len(imgs))
@@ -67,4 +64,11 @@ def load(ROOT):
 
     Xtr = np.concatenate(xs)
     Ytr = np.concatenate(ys)
-    return Xtr, Ytr, Xte, None
+
+    X_test = Xtr[:2000]
+    y_test = Ytr[:2000]
+
+    X_train = Xtr[2000:]
+    y_train = Ytr[2000:]
+
+    return X_train, y_train, X_test, y_test
