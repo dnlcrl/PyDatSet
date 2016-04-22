@@ -4,10 +4,7 @@
 import numpy as np
 from skimage.transform import rotate
 from skimage.util import random_noise
-import math
 
-from numpy.random import random_integers
-from scipy.signal import convolve2d
 
 
 def random_flips(X):
@@ -299,6 +296,10 @@ def elastic_transform(image, kernel_dim=13, sigma=6, alpha=36, negated=False):
     :returns: a nd array transformed image
     """
     # TEMP FIX
+    import math
+
+    from numpy.random import random_integers
+    from scipy.signal import convolve2d
     import cv2
 
     # convert the image to single channel if it is multi channel one
