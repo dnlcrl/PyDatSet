@@ -13,6 +13,7 @@ checkpoints/
 # datasets
 cifar-10-batches-py/
 gtsrb/
+SFDDD/
 
 # notebooks
 noteboook/
