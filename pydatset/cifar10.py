@@ -9,8 +9,7 @@ import os
 def get_CIFAR10_data(cifar10_dir, num_training=49000, num_validation=1000, num_test=1000):
     '''
     Load the CIFAR-10 dataset from disk and perform preprocessing to prepare
-    it for the two-layer neural net classifier. These are the same steps as
-    we used for the SVM, but condensed to a single function.
+    it for the neural net classifier.
     '''
     # Load the raw CIFAR-10 data
     X_train, y_train, X_test, y_test = load(cifar10_dir)
