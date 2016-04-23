@@ -6,13 +6,20 @@ import os
 from scipy.ndimage import imread
 
 
-def get_data(directory):
+def get_data(directory, num_validation=2000):
     '''
     Load the SFDDD dataset from disk and perform preprocessing to prepare
     it for the neural net classifier.
     '''
     # Load the raw SFDDD data
-    X_train, y_train, X_test, y_test = load(directory)
+    Xtr, Ytr = load(directory)
+
+    X_test = Xtr[:num_validation]
+    y_test = Ytr[:num_validation]
+
+    X_train = Xtr[num_validation:]
+    y_train = Ytr[num_validation:]
+
     l = len(X_train)
     mask = np.random.choice(l, l)
     X_train = X_train[mask]
@@ -65,10 +72,9 @@ def load(ROOT):
     Xtr = np.concatenate(xs)
     Ytr = np.concatenate(ys)
 
-    X_test = Xtr[:2000]
-    y_test = Ytr[:2000]
+    mask = np.arange(len(Ytr))
+    np.random.shuffle(mask)
+    Xtr = Xtr[mask]
+    Ytr = Ytr[mask]
 
-    X_train = Xtr[2000:]
-    y_train = Ytr[2000:]
-
-    return X_train, y_train, X_test, y_test
+    return Xtr, Ytr
